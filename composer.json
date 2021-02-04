@@ -1,0 +1,26 @@
+{
+    "name": "janondracek1/poski",
+    "description": "Trial task",
+    "type": "project",
+    "require": {
+        "nette/tokenizer": "^3.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "authors": [
+        {
+            "name": "janondracek1",
+            "email": "jan.ondracek1@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.0.1"
+        }
+    }
+}
