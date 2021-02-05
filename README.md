@@ -8,5 +8,6 @@ Verze PHP: 8.0.0
 
 ## Spuštění:
 ```cmd
+composer install
 "vendor\bin\phpunit" ./Tests/
 ```
