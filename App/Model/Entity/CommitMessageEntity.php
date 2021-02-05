@@ -16,7 +16,7 @@ class CommitMessageEntity implements ICommitMessageEntity
 		private array $details,
 		private array $bcBreaks,
 		private array $todos,
-		private array $features
+		private array $features,
 	) {
 	}
 
