@@ -6,7 +6,7 @@ namespace App\Model\Entity;
 
 interface ICommitMessageEntity
 {
-	/** $return string SHA */
+	/** @return string SHA */
 	public function getCommitHash(): string;
 
 	/** @return string Integrovat Premier: export objednávek */
