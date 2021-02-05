@@ -14,7 +14,6 @@ class CommitMessageService
 	public const REGEX_TITLE = "/\s([A-Za-z].+)$/m";
 	public const REGEX_DETAIL = "/^\*\s(.+)$/m";
 	public const REGEX_BC_BREAK = "/^BC: (.+)$/m";
-	public const REGEX_FEATURE = "/^Feature: (.+)$/m";
 	public const REGEX_TODO = "/^TODO: (.+)$/m";
 
 	public function __construct()
@@ -32,7 +31,6 @@ class CommitMessageService
 		//rest of lines
 		$arrayDetail = $this->parseValues($commitMessage, self::REGEX_DETAIL);
 		$arrayBCBreak = $this->parseValues($commitMessage, self::REGEX_BC_BREAK);
-		$arrayFeature = $this->parseValues($commitMessage, self::REGEX_FEATURE);
 		$arrayTodo = $this->parseValues($commitMessage, self::REGEX_TODO);
 		$commitMessageEntity = new CommitMessageEntity(
 			$commitHash,
@@ -42,7 +40,6 @@ class CommitMessageService
 			$arrayDetail,
 			$arrayBCBreak,
 			$arrayTodo,
-			$arrayFeature
 		);
 
 		return $commitMessageEntity;

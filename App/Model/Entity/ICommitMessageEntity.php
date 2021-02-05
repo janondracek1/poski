@@ -26,7 +26,4 @@ interface ICommitMessageEntity
 
 	/** @return string[] */
 	public function getTodos(): array;
-
-	/** @return string[] */
-	public function getFeatures(): array;
 }

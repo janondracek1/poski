@@ -16,7 +16,6 @@ class CommitMessageEntity implements ICommitMessageEntity
 		private array $details,
 		private array $bcBreaks,
 		private array $todos,
-		private array $features,
 	) {
 	}
 
@@ -60,12 +59,6 @@ class CommitMessageEntity implements ICommitMessageEntity
 	public function getTodos(): array
 	{
 		return $this->todos;
-	}
-
-
-	public function getFeatures(): array
-	{
-		return $this->features;
 	}
 
 

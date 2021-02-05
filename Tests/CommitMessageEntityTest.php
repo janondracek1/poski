@@ -32,7 +32,6 @@ class CommitMessageEntityTest extends TestCase
 		string $expectedTitle,
 		array $expectedDetails,
 		array $expectedBcBreaks,
-		array $expectedFeatures,
 		array $expectedTodos,
 	): void
 	{
@@ -43,7 +42,6 @@ class CommitMessageEntityTest extends TestCase
 		$this->assertSame($expectedTaskId, $commitMessageEntity->getTaskId());
 		$this->assertEqualsCanonicalizing($expectedDetails, $commitMessageEntity->getDetails());
 		$this->assertEqualsCanonicalizing($expectedBcBreaks, $commitMessageEntity->getBcBreaks());
-		$this->assertEqualsCanonicalizing($expectedFeatures, $commitMessageEntity->getFeatures());
 		$this->assertEqualsCanonicalizing($expectedTodos, $commitMessageEntity->getTodos());
 	}
 
@@ -69,7 +67,6 @@ TODO: Refactoring autoemail modulu.",
 				"Integrovat Premier: export objednávek",
 				['Export objednávek cronem co hodinu.', 'Export probíhá v dávkách.'],
 				['Refaktorovaný BaseImporter.'],
-				['Nový logger.'],
 				['Refactoring autoemail modulu.'],
 			],
 			[
@@ -88,7 +85,6 @@ DOTO: I don't know",
 				"Test implementation - WIP",
 				['Tohle tu má co dělat'],
 				[],
-				[],
 				['FIX', 'Implement'],
 			],
 			[
@@ -103,7 +99,6 @@ DADADA: so wrong",
 				['tag'],
 				null,
 				"Title",
-				[],
 				[],
 				[],
 				[],
