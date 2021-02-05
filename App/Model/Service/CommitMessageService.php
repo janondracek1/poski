@@ -24,9 +24,12 @@ class CommitMessageService
 
 	public function create(string $commitHash, string $commitMessage): CommitMessageEntity
 	{
-		$arrayTag = $this->parseValues($commitMessage, self::REGEX_TAG);
-		$taskId = $this->parseValues($commitMessage, self::REGEX_TASK_ID)[0] ?? null;
-		$title = $this->parseValues($commitMessage, self::REGEX_TITLE)[0];
+		[$commitMessageFirstLine, $commitMessage] = $this->prepareMessage($commitMessage);
+		//first-line only
+		$arrayTag = $this->parseValues($commitMessageFirstLine, self::REGEX_TAG);
+		$taskId = $this->parseValues($commitMessageFirstLine, self::REGEX_TASK_ID)[0] ?? null;
+		$title = $this->parseValues($commitMessageFirstLine, self::REGEX_TITLE)[0];
+		//rest of lines
 		$arrayDetail = $this->parseValues($commitMessage, self::REGEX_DETAIL);
 		$arrayBCBreak = $this->parseValues($commitMessage, self::REGEX_BC_BREAK);
 		$arrayFeature = $this->parseValues($commitMessage, self::REGEX_FEATURE);
@@ -43,6 +46,17 @@ class CommitMessageService
 		);
 
 		return $commitMessageEntity;
+	}
+
+
+	protected function prepareMessage(string $commitMessage): array
+	{
+		$commitMessageLines = [];
+		preg_match_all('/^(.+)$/m', $commitMessage, $commitMessageLines);
+		$commitMessageLines = $commitMessageLines[1];
+		$commitMessageFirstLine = array_shift($commitMessageLines);
+		$commitMessage = implode(PHP_EOL, $commitMessageLines);
+		return [$commitMessageFirstLine, $commitMessage];
 	}
 
 

@@ -91,25 +91,25 @@ DOTO: I don't know",
 				[],
 				['FIX', 'Implement'],
 			],
+			[
+				"69309c7712b6f01beb8d135f6e0ec4b3",
+				"[tag] Title
+
+- Wrong use of symbol
+
+ADADA: This is
+DADADA: so wrong",
+				"69309c7712b6f01beb8d135f6e0ec4b3",
+				['tag'],
+				null,
+				"Title",
+				[],
+				[],
+				[],
+				[],
+			],
 		];
 	}
-
-
-//	/**
-//	 * @dataProvider invalidCommitMessageDataProvider
-//	 */
-//	public function testInvalidCommitMessage(): void
-//	{
-//
-//	}
-//
-//
-//	public function invalidCommitMessageDataProvider(): array
-//	{
-//		return [
-//
-//		];
-//	}
 
 
 }
