@@ -89,19 +89,50 @@ DOTO: I don't know",
 			],
 			[
 				"69309c7712b6f01beb8d135f6e0ec4b3",
-				"[tag] Title
+				"Title
 
-- Wrong use of symbol
+- this will be ommited
 
-ADADA: This is
-DADADA: so wrong",
+OMITME: this as well",
 				"69309c7712b6f01beb8d135f6e0ec4b3",
-				['tag'],
+				[],
 				null,
 				"Title",
 				[],
 				[],
 				[],
+			],
+		];
+	}
+
+
+	/**
+	 * @dataProvider invalidTitleCommitMessageDataProvider
+	 */
+	public function testInvalidTitleCommitMessage(string $commitHash, string $commitMessage): void
+	{
+		$this->expectException(\TypeError::class);
+		$this->commitMessageService->create($commitHash, $commitMessage);
+	}
+
+
+	public function invalidTitleCommitMessageDataProvider(): array
+	{
+		return [
+			[
+				"69309c7712b6f01beb8d135f6e0ec4b3",
+				"[tag1] [tag2]
+				
+* Export objednávek cronem co hodinu.
+* Export probíhá v dávkách.
+
+BC: Refaktorovaný BaseImporter.
+
+Feature: Nový logger.
+
+TODO: Refactoring autoemail modulu.
+				",
+				"69309c7712b6f01beb8d135f6e0ec4b3",
 			],
 		];
 	}

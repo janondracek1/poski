@@ -11,7 +11,8 @@ class CommitMessageService
 
 	public const REGEX_TAG = "/\[(\w+)\]/";
 	public const REGEX_TASK_ID = "/\#(\d+)/";
-	public const REGEX_TITLE = "/\s([A-Za-z].+)$/m";
+	public const REGEX_TITLE_WITH_SPACE = "/\s([A-Za-z].+)$/m";
+	public const REGEX_TITLE_BEGINNING = "/^([A-Za-z].+)$/m";
 	public const REGEX_DETAIL = "/^\*\s(.+)$/m";
 	public const REGEX_BC_BREAK = "/^BC: (.+)$/m";
 	public const REGEX_TODO = "/^TODO: (.+)$/m";
@@ -27,7 +28,10 @@ class CommitMessageService
 		//first-line only
 		$arrayTag = $this->parseValues($commitMessageFirstLine, self::REGEX_TAG);
 		$taskId = $this->parseValues($commitMessageFirstLine, self::REGEX_TASK_ID)[0] ?? null;
-		$title = $this->parseValues($commitMessageFirstLine, self::REGEX_TITLE)[0];
+		$title = $this->parseValues($commitMessageFirstLine, self::REGEX_TITLE_WITH_SPACE)[0] ?? null;
+		if(is_null($title)){
+			$title = $this->parseValues($commitMessageFirstLine, self::REGEX_TITLE_BEGINNING)[0] ?? null;
+		}
 		//rest of lines
 		$arrayDetail = $this->parseValues($commitMessage, self::REGEX_DETAIL);
 		$arrayBCBreak = $this->parseValues($commitMessage, self::REGEX_BC_BREAK);
@@ -53,6 +57,7 @@ class CommitMessageService
 		$commitMessageLines = $commitMessageLines[1];
 		$commitMessageFirstLine = array_shift($commitMessageLines);
 		$commitMessage = implode(PHP_EOL, $commitMessageLines);
+
 		return [$commitMessageFirstLine, $commitMessage];
 	}
 
