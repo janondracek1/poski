@@ -41,7 +41,7 @@ class CommitMessageEntityTest extends TestCase
 		$this->assertSame($expectedTitle, $commitMessageEntity->getTitle());
 		$this->assertSame($expectedTaskId, $commitMessageEntity->getTaskId());
 		$this->assertEqualsCanonicalizing($expectedDetails, $commitMessageEntity->getDetails());
-		$this->assertEqualsCanonicalizing($expectedBcBreaks, $commitMessageEntity->getBcBreaks());
+		$this->assertEqualsCanonicalizing($expectedBcBreaks, $commitMessageEntity->getBCBreaks());
 		$this->assertEqualsCanonicalizing($expectedTodos, $commitMessageEntity->getTodos());
 	}
 

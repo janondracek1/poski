@@ -50,7 +50,7 @@ class CommitMessageEntity implements ICommitMessageEntity
 	}
 
 
-	public function getBcBreaks(): array
+	public function getBCBreaks(): array
 	{
 		return $this->bcBreaks;
 	}
